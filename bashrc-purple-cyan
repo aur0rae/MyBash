@@ -1,0 +1,71 @@
+#
+# ~/.bashrc
+#
+
+# ---------------- Default BASH stuff ---------------- #
+#                                                      #
+# This is all my various aliases for commands and      #
+# other random nonsense.                               #
+#                                                      #
+# ---------------------------------------------------- #
+
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+
+# ---------------------- PROMPT ---------------------- #
+#                                                      #
+# This is where I am defining my custom bash prompt.   #
+# Currently I have it designed in a way where I get    #
+# layered "banners" of colors that display different   #
+# things. PS1 is themed to have purple and cyan for    #
+# the color scheme to go with the twilight-looking     #
+# backdrop and theme of KDE  -NB                       #
+#                                                      #
+# ---------------------------------------------------- #
+#                        COLORS                        #
+# ---------------------------------------------------- #
+
+t1_bg="\[$(tput setab 56)\]" # this is the main color of the prompt where the host and user names are displayed - 56 for default purple
+t1_fg="\[$(tput setaf 56)\]"
+t2_bg="\[$(tput setab 99)\]" # this is the secondary color for the ascii logo tab and working directory - 99 for the default lighter purple
+t2_fg="\[$(tput setaf 99)\]"
+t3_bg="\[$(tput setab 87)\]" # currently this is the last tab for the time - 87 for default cyan
+t3_fg="\[$(tput setaf 87)\]"
+RESET="\[$(tput sgr0)\]"
+
+# ---------------------------------------------------- #
+#                       FLAG TIPS                      #
+# ---------------------------------------------------- #
+
+triangle_1=$(echo -e "${t2_fg}${t1_bg}\uE0B0${RESET}") # this is the tab to transition from the logo to the hostname banner
+triangle_2=$(echo -e "${t1_fg}${t2_bg}\uE0B0${RESET}") # this is the tab to transition from the hostname to pwd banner
+triangle_3=$(echo -e "${t2_fg}${t3_bg}\uE0B0${RESET}") # this is the tab to transition from the pwd to time banner
+triangle_4=$(echo -e "${t3_fg}\uE0B0") # this is the end of the last banner before the new line and prompt
+
+# ---------------------------------------------------- #
+#                      GIT STATUS                      #
+# ---------------------------------------------------- #
+
+parse_git_branch() {
+     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
+}
+
+# ---------------------------------------------------- #
+#                       THE PROMPT                     #
+# ---------------------------------------------------- #
+
+# Currently this writes out the banners, a little "loop," and the iconic $. 
+# It should print out a little ASCII character resembling the Arch logo in
+# the first banner, then your username and hostname, then the current 
+# working directory/git status, followed by the time. You may need to change
+# the "\[\e[X;XXm\]" in various places for contrast reasons if you change
+# banner colors around :)
+PS1="\[\e[36m\]╭─${t2_bg} \[\e[1;36m\]⮝ ${triangle_1}${t1_bg} \[\e[37m\]\u@\h ${RESET}${triangle_2}${t2_bg} \e[30m\]\w \[\e[1;36m\]\$(parse_git_branch)${triangle_3}${t3_bg} \[\e[30m\]\@ ${RESET}${triangle_4}${RESET} \n\[\e[36m\]╰─\$ \[\e[37m\]"
+
+# ---------------------------------------------------- #
+#                      END OF FILE                     #
+# ---------------------------------------------------- #
