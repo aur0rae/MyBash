@@ -5,10 +5,12 @@
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-alias ls='ls --color=auto'
+alias ls='eza'
+alias ll='eza -la'
+alias cat='bat'
 alias grep='grep --color=auto'
 
 source /usr/share/git/git-prompt.sh
+eval "$(zoxide init --cmd cd bash)"
 
-
-PS1="\[\e[36m\]╭─\[\e[1;36m\]\u@\h \[\e[0;37m\]in \[\e[1;35m\]\w\[\e[0;32m\]\$(__git_ps1) \[\e[0;37m\]at \[\e[1;34m\]\@ \n\[\e[0;36m\]╰─𝝺 \[\e[0;37m\]"
+PS1="\[\e[36m\]╭─\[\e[1;36m\]\u@\h \[\e[0;37m\]in \[\e[1;35m\]\w\[\e[0;32m\]\$(__git_ps1) \[\e[0;37m\]at \[\e[1;36m\]\@ \n\[\e[0;36m\]╰─𝝺 \[\e[0;37m\]"
