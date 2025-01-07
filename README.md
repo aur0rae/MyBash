@@ -1,4 +1,5 @@
 <img src="https://github.com/aurorae-nb/bash-customizations/blob/main/res/bash.png">
+
 ## About
 This is my repo for storing custom `.bashrc` files for use on my Linux systems. It includes a set of aliases for compatibility with some of the command line tools I like and adds some visual flare to my terminal.
 
