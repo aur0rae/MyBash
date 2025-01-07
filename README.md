@@ -1,15 +1,17 @@
-# mybash
-## My bash prompt customizations!
+## About
+This is my repo for storing custom `.bashrc` files for use on my Linux systems. It includes a set of aliases for compatibility with some of the command line tools I like and adds some visual flare to my terminal.
 
-This is primarily a set of visual customizations I'm making to my bash prompt.
-It's designed to be a customizable set of "banners" that contain a hostname,
-the current directory, and git status. Colors are easily changable but making
-multiple different configs makes switching easier and equally speeds up tweaks
-on a new system. 
 
-The goal here was to create a pretty bash prompt primarily without need for 
-special programs. To use, simply take one of these files, rename to ".bashrc" 
-and move to your home directory! More info on theming included in the files. 
-Currently the Nord theme is the only config that requires the addition of 
-Starship and, coincidentally, is the only one that has all my custom aliases.
-For them to work right, install zoxide, fzf, bat, and eza.
+## Installation
+Move your config of choice to `~/.bashrc` and either `source ~/.bashrc` or restart your terminal emulator. For this to work you will need the following:
+- `bat`/`batcat`
+- `zoxide`
+- `fzf`
+- `eza`
+- `git`
+
+Optionally install [Starship](https://starship.rs/) if you'd like to use the Nordic theme. If you do this, move `starship.toml` to `~/.config/`.
+
+
+## Credits
+Thanks to the couple people on the StyroPyro Discord server that helped me figure out how to do this! Secondarily, `starship.toml` is borrowed from Chris Titus' [Beautiful Bash](https://github.com/christitustech/mybash).

@@ -10,7 +10,6 @@ alias ll='eza -la'
 alias cat='bat'
 alias grep='grep --color=auto'
 
-source /usr/share/git/git-prompt.sh
 eval "$(zoxide init --cmd cd bash)"
 eval "$(starship init bash)"
 
