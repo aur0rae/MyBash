@@ -9,8 +9,10 @@ alias ls='eza'
 alias ll='eza -la'
 alias cat='bat'
 alias grep='grep --color=auto'
-
 eval "$(zoxide init --cmd cd bash)"
+
+# Format bash prompt
 eval "$(starship init bash)"
 
+# This can be omitted
 PS1="\u@\h \w $ "
