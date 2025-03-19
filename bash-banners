@@ -9,10 +9,16 @@ alias ls='eza'
 alias ll='eza -la'
 alias cat='bat'
 alias grep='grep --color=auto'
-
-source /usr/share/git/git-prompt.sh
 eval "$(zoxide init --cmd cd bash)"
 
+# Set up git integration
+source /usr/share/git/git-prompt.sh
+
+# Format bash prompt to
+#    ╭─ ⮝  aurora@archlinux  ~  01:44 PM  
+#    ╰─$ 
+# (Some characters may not render correctly, nor will background colors)
+#
 t1_bg="\[$(tput setab 87)\]" # this is the main color of the prompt where the host and user names are displayed - 56 for default purple
 t1_fg="\[$(tput setaf 87)\]"
 t2_bg="\[$(tput setab 99)\]" # this is the secondary color for the ascii logo tab and working directory - 99 for the default lighter purple
@@ -26,4 +32,4 @@ triangle_2=$(echo -e "${t1_fg}${t2_bg}\uE0B0${RESET}") # this is the tab to tran
 triangle_3=$(echo -e "${t2_fg}${t3_bg}\uE0B0${RESET}") # this is the tab to transition from the pwd to time banner
 triangle_4=$(echo -e "${t3_fg}\uE0B0") # this is the end of the last banner before the new line and prompt
 
-PS1="\[\e[36m\]╭─${t2_bg} \[\e[1;36m\]⮝ ${triangle_1}${t1_bg} \[\e[30m\]\u@\h ${RESET}${triangle_2}${t2_bg} \e[30m\]\w \[\e[1;36m\]\$(__git_ps1)${triangle_3}${t3_bg} \[\e[30m\]\@ ${RESET}${triangle_4}${RESET} \n\[\e[36m\]╰─\$ \[\e[37m\]"
+PS1="\[\e[0;36m\]╭─${t2_bg} \[\e[1;36m\]⮝ ${triangle_1}${t1_bg} \[\e[0;30m\]\u@\h ${RESET}${triangle_2}${t2_bg} \e[0;30m\]\w \[\e[1;36m\]\$(__git_ps1)${triangle_3}${t3_bg} \[\e[0;30m\]\@ ${RESET}${triangle_4}${RESET} \n\[\e[0;36m\]╰─\$ \[\e[0;37m\]"
